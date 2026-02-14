@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Friday Extraordinária - Thaís Fraga</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* ====== SEÇÃO PRINCIPAL ====== */
+        .hero {
+            background-image: url('imagens/WhatsApp Image 2025-11-02 at 14.04.07.jpeg');
+            background-size: cover;
+            background-position: right center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            color: #fff;
+            margin-left: 180px;
+            /* move todo o conteúdo um pouco à direita */
+        }
+
+        /* ====== LOGO E DATA ====== */
+        .logo-date {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .logo-box {
+            border: 2px solid #cd9746;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #cd9746;
+        }
+
+        .date {
+            font-size: 1em;
+            color: #fff;
+        }
+
+        /* ====== TEXTOS ====== */
+        .highlight {
+            color: #ff4444;
+            font-size: 0.9em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            color: #fff;
+        }
+
+        /* ====== FORMULÁRIO ====== */
+        .form-container {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            padding: 25px;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        .form-container p {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #111;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        .form-container input::placeholder {
+            color: #aaa;
+        }
+
+        .cta-button {
+            background-color: #ffcf6d;
+            color: #000;
+            font-weight: bold;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e8b85c;
+        }
+
+        /* ====== RODAPÉ ====== */
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #cd9746;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .content {
+                max-width: 90%;
+            }
+
+            .form-container {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="overlay"></div>
+
+        <div class="content">
+            <div class="logo-date">
+                <div class="logo-box">MDE</div>
+                <div class="date">27 de novembro<br>de 2025</div>
+            </div>
+
+            <div class="highlight">BLACK FRIDAY EXTRAORDINÁRIA</div>
+
+            <h1>
+                A OPORTUNIDADE DO ANO<br>
+                PRA <strong>DESTRAVAR</strong><br>
+                SUA VIRADA NO DIGITAL
+            </h1>
+
+            <div class="form-container">
+                <p>Preencha os campos abaixo para entrar no <strong>grupo VIP</strong> e receber todas as informações
+                    sobre essa oportunidade.</p>
+
+                <form id="vip-form">
+                    <input type="text" name="nome" placeholder="Digite seu nome" required>
+                    <input type="email" name="email" placeholder="Digite seu melhor e-mail" required>
+                    <input type="tel" name="whatsapp" placeholder="Digite seu telefone" required>
+                    <button type="button" class="cta-button" onclick="handleSubmit()">EU QUERO TRANSFORMAR A MINHA
+                        VIDA</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Thaís Fraga • 2025 Todos os direitos reservados</p>
+        <p>
+            <a href="https://www.instagram.com/thaisrsfraga/" target="_blank">Instagram</a> •
+            <a href="#">Voltar ao topo</a>
+        </p>
+    </footer>
+
+    <script>
+        function handleSubmit() {
+            const nome = document.querySelector('input[name="nome"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const whatsapp = document.querySelector('input[name="whatsapp"]').value;
+
+            if (nome && email && whatsapp) {
+                localStorage.setItem('userInfo', JSON.stringify({ nome, email, whatsapp }));
+                window.location.href = 'https://chat.whatsapp.com/DROHgvSLz0dC5HglcHOg9k';
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
